@@ -24,6 +24,10 @@ export default function PhotoRotary() {
     setActive((prev) => (prev + 1) % photos.length)
   }, [])
 
+  const prev = useCallback(() => {
+    setActive((prev) => (prev - 1 + photos.length) % photos.length)
+  }, [])
+
   useEffect(() => {
     if (paused) return
     const id = setInterval(next, INTERVAL_MS)
@@ -46,6 +50,16 @@ export default function PhotoRotary() {
             draggable={false}
           />
         ))}
+        <button className="rotary-arrow rotary-arrow-left" onClick={prev} aria-label="Previous photo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+        </button>
+        <button className="rotary-arrow rotary-arrow-right" onClick={next} aria-label="Next photo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="m9 18 6-6-6-6"/>
+          </svg>
+        </button>
       </div>
       <div className="rotary-dots">
         {photos.map((_, i) => (
