@@ -1,6 +1,6 @@
 const TECH_STACK = [
   'TypeScript', 'React', 'Python', 'Node.js',
-  'GraphQL', 'PostgreSQL', 'Docker', 'AWS',
+  'PostgreSQL', 'AWS',
 ]
 
 export default function About() {
